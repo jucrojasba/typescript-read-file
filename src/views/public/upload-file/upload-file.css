@@ -1,0 +1,57 @@
+    body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+    
+    .upload-file {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-image: url('../../../assets/images/upload.webp');
+        background-size: cover;
+        background-position: left left;
+    }
+    
+    .upload-file h1 {
+        color: rgb(24, 24, 88);
+    }
+    
+    .upload-file input {
+        align-self: center;
+        width: 200px;
+    }
+    
+    .upload-file>.upload-file-message {
+        display: fleX;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(255, 255, 255, 0.253);
+        border-radius: var(--spacing-2);
+        -webkit-border-radius: var(--spacing-2);
+        -moz-border-radius: var(--spacing-2);
+        -ms-border-radius: var(--spacing-2);
+        -o-border-radius: var(--spacing-2);
+        padding: var(--spacing-4);
+    }
+    
+    input::file-selector-button {
+        background-color: rgb(24, 24, 88);
+        padding: var(--spacing-2);
+        color: white;
+        border: none;
+        border-radius: var(--spacing-2);
+        -webkit-border-radius: var(--spacing-2);
+        -moz-border-radius: var(--spacing-2);
+        -ms-border-radius: var(--spacing-2);
+        -o-border-radius: var(--spacing-2);
+        cursor: pointer;
+    }
+    
+    input::file-selector-button:hover {
+        scale: 1.02;
+    }
