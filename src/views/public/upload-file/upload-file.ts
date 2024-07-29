@@ -1,21 +1,21 @@
-import { CSVData } from "../../../models/file.model";
-import { CSVHandler } from "../../../controllers/file.controller";
 import './upload-file.css';
+import { navigateTo } from "../../../router";
 
 export function uploadFileView() {
     const $root = document.getElementById('root') as HTMLElement;
 
     // Page Content
     $root.innerHTML = `
+    <div class="upload-file">
+        <div class="upload-file-message">
+        <h1>I ♡ CSV</h1>
+        <p>Please upload a CSV file to do queries</p>
         <input type="file" id="fileInput" accept=".csv" />
-        <input type="text" id="searchInput" placeholder="Search..."/>
-        <div id="tableContainer"></div>
-        <div id="paginationContainer"></div>
+        </div>
+    </div>
     `;
 
     // Logic
-
-
     const fileInput = document.getElementById('fileInput') as HTMLInputElement | null;
 
 
@@ -33,6 +33,7 @@ export function uploadFileView() {
                 localStorage.setItem('csvFileContent', reader.result as string);
             };
             reader.readAsText(file);
+            navigateTo('/result')
         }
     });
 }

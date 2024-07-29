@@ -1,12 +1,12 @@
-.root-container-not-found{
+.root-container-not-found {
     width: 100vw;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.5);;
 }
-.not-found-container{
+
+.not-found-container {
     width: fit-content;
     height: fit-content;
     display: flex;
@@ -17,17 +17,17 @@
     padding: 30px;
     color: rgb(43, 43, 110);
     background-color: white;
+    border: 1px solid rgb(43, 43, 110);
 }
 
-
-.message{
+.message {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-#back-home{
+#back-home {
     cursor: pointer;
     background-color: var(--white-color);
     padding: var(--spacing-2);
@@ -35,7 +35,8 @@
     color: var(--main-color);
     transition: color 0.9s, background-color 0.9s;
 }
-#back-home:hover{
-    scale:1.02;
+
+#back-home:hover {
+    scale: 1.02;
     background-color: var(--second-color);
 }

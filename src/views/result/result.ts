@@ -1,14 +1,19 @@
-import { CSVData } from "../../../models/file.model";
-import { CSVHandler } from "../../../controllers/file.controller";
+import { CSVData } from "../../models/file.model";
+import { CSVHandler } from "../../controllers/file.controller";
 import './result.css';
 
 export function resultView(){
     const $root=document.getElementById('root') as HTMLElement;
     $root.innerHTML=`
-    <h1>Hola desde results</h1>
+    <h1>Results</h1>
+    <div class="actions">
     <input type="text" id="searchInput" placeholder="Search..."/>
-    <div id="tableContainer"></div>
+    <button id="download">Download CSV</button>
+    <button id="clearCSV">Upload another CSV</button>
+    </div>
+    <h3>Pages</h3>
     <div id="paginationContainer"></div>
+    <div id="tableContainer"></div>
     `;
 
     let csvData: CSVData[] = [];
@@ -24,7 +29,7 @@ export function resultView(){
         return;
     }
 
-    // Instanciar
+    // Instanciate
     const csvHandler = new CSVHandler(csvData, currentPage, recordsPerPage, searchInput, tableContainer, paginationContainer);
 
 
@@ -33,8 +38,22 @@ export function resultView(){
     if (storedFileContent) {
         const blob = new Blob([storedFileContent], { type: 'text/csv' });
         const file = new File([blob], 'stored.csv', { type: 'text/csv' });
-        csvHandler.handleFileUpload({ target: { files: [file] } } as any);
+        
+        const event = { target: { files: [file] } } as any;
+        csvHandler.handleFileUpload(event);
     }
 
     searchInput.addEventListener('input', () => csvHandler.renderTable(currentPage));
+
+    //Delete CSV
+    const $clearCSVButton = document.getElementById('clearCSV') as HTMLButtonElement | null;
+    if ($clearCSVButton) {
+        $clearCSVButton.addEventListener('click', () => {
+            localStorage.removeItem('csvFileContent');
+            window.location.reload();
+        });
+    }
+
+    // Download CSV
+    document.getElementById('download')?.addEventListener('click', () => csvHandler.downloadCSV());
 } 
