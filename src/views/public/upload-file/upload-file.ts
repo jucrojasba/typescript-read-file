@@ -6,6 +6,7 @@ export function uploadFileView(){
     //Page Content
     $root.innerHTML=`
     <h1>Hola desde upload File</h1>
+    <input type="file" id="fileInput" accept=".csv" />
     <button id="upload-file">Upload File</button>
     `;
 
