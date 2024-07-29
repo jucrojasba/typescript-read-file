@@ -4,10 +4,10 @@ export function router(){
     const path = window.location.pathname;
     const publicRoute = routes.public.find(r => r.path === path);
     const resultRoute = routes.result.find(r=>r.path===path);
-    const uploadedFile = localStorage.getItem('uploadedFile');
+    const uploadedFile = localStorage.getItem('csvFileContent');
     
     //Si accede a ruta principal y no hay archivo cargado
-    if(path == '/' && !uploadedFile) {
+    if((path == '/' || path=='/result') && !uploadedFile) {
         navigateTo('/upload-file');
         return
     }
