@@ -1,5 +1,4 @@
 import './upload-file.css';
-import { navigateTo } from "../../../router";
 
 export function uploadFileView() {
     const $root = document.getElementById('root') as HTMLElement;
