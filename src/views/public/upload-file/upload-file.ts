@@ -33,7 +33,7 @@ export function uploadFileView() {
                 localStorage.setItem('csvFileContent', reader.result as string);
             };
             reader.readAsText(file);
-            navigateTo('/result')
+            window.location.reload();
         }
     });
 }
